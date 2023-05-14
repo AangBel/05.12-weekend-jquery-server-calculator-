@@ -1,73 +1,68 @@
 body {
-    background-color: darkseagreen;
+  background-color: darkseagreen;
 }
 
 #inputs {
-    display: flex;
-    justify-content: center;
-    margin-top:80px;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
 }
 
 #add {
-    width: 50px;
-    height:50px;
-    margin:2px;
-    font-size: 31px;
-    
-
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 
 #subtract {
-    width: 50px;
-    height:50px;
-    margin:2px;
-    font-size: 31px;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 #multiply {
-    width: 50px;
-    height:50px;
-    margin:2px;
-    font-size: 31px;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 
 #divide {
-    width: 50px;
-    height:50px; 
-    margin:2px;
-    font-size: 31px;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 #inputA {
-    padding:10px;
-    width:50px;
-    height:40px;
-    margin:2px; 
-    
+  padding: 10px;
+  width: 50px;
+  height: 40px;
+  margin: 2px;
 }
 
 #inputB {
-    padding:10px;
-    width:50px;
-    height:40px;
-    margin:2px;
-    
+  padding: 10px;
+  width: 50px;
+  height: 40px;
+  margin: 2px;
 }
 
 #enter {
-    width: 50px;
-    height:50px;
-    margin:2px;
-    font-size: 31px;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 
 #clear {
-    width: 89px;
-    height:50px;
-    margin:2px;
-    font-size: 31px;
+  width: 89px;
+  height: 50px;
+  margin: 2px;
+  font-size: 31px;
 }
 h1 {
-    /* display: flex; */
-    text-align: center;
-    font-size:70px;
+  /* display: flex; */
+  text-align: center;
+  font-size: 70px;
 }
