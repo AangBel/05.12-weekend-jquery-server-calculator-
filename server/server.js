@@ -43,10 +43,14 @@ app.post("/calculator", function (req, res) {
   // (req.body);
   // calculator(req.body);
   let postData = req.body;  
-
+  
   let total = calculator(postData.inputOne, postData.operators, postData.inputTwo);
+  let saveMemory = `${postData.inputOne}  ${postData.operators} ${postData.inputTwo} = ${total}`
+  console.log(saveMemory);
+  
   console.log(total);
-  calcHx.push(total); 
+  calcHx.push({total, saveMemory
+  }); 
 
 
   // Add my new quote to the quoteList

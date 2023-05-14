@@ -4,11 +4,9 @@ $(document).ready(onReady);
 
 let operators = "";
 
-// let inputA = $("#inputA").val();
-//   console.log(inputA);
+let inputA = 0;
 
-//   let inputB = $("#inputB").val();
-//   console.log(inputB);
+let inputB = 0;
 
 function onReady() {
   console.log("jquery is loaded");
@@ -24,11 +22,11 @@ function onReady() {
 function post2Server(event) {
   console.log("post2SERVER is ready");
   event.preventDefault();
-  let inputA = $("#inputA").val();
+  inputA = $("#inputA").val();
   console.log($("#inputA").val());
-  let inputB = $("#inputB").val();
+  inputB = $("#inputB").val();
   console.log($("#inputB").val());
-    //i want this to console.log inputA, operators, inputB
+  //i want this to console.log inputA, operators, inputB
   console.log(inputA, operators, inputB);
 
   $.ajax({
@@ -44,7 +42,6 @@ function post2Server(event) {
       console.log("nice, working so far!");
       console.log(response);
       getFromServer();
-      
     })
     .catch(function (error) {
       //why is this not working?
@@ -70,14 +67,12 @@ function getFromServer() {
       alert("request failed!, try again...");
       console.log("request for GET failed!", error);
     });
-    calculator();
+  calculator();
 } //end of get from server
-
 
 // + Number(operators)+ potato.inputB
 
-
-function getFromCalc(){
+function getFromCalc() {
   console.log("getFromCalc is working");
   $.ajax({
     method: "GET",
@@ -97,8 +92,8 @@ function getFromCalc(){
       alert("request failed!, try again...");
       console.log("request for GET failed!", error);
     });
-    calculator();
-} 
+  calculator();
+}
 
 //end of get from calc
 
@@ -106,22 +101,19 @@ function getFromCalc(){
 //is this the part that is posting the data that we got?
 function renderToDom(calcHx) {
   console.log("Got Data!");
-    let potato = $(calcHx);
-    // console.log(potato);
+  let potato = calcHx;
+  console.log(potato);
+  let total = calcHx[calcHx.length-1].saveMemory;
+  
+$('#answer').text(total)
 
-  let inputA = $("#inputA").val();
-  console.log(inputA);
-
-  let inputB = $("#inputB").val();
-  console.log(inputB);
 
   // let total = $(inputA) + potato + $(inputB);
   // console.log("total", total);
+  // for (let i of calcHx{length-1});
+
   $("#calcHx").append(`
-        <li>${Number(inputA)}</li>
-        <li>${operators}</li>
-        <li>${Number(inputB)}</li>
-        
+        <li>${total}</li>
     `);
 } //end of render to DOM
 //FUNCTIONS for the items above
@@ -176,8 +168,8 @@ function clearFunc() {
 function post2Server(response) {
   console.log("response is ready");
   event.preventDefault();
-  let inputA = $("#inputA").val();
-  let inputB = $("#inputB").val();
+  inputA = $("#inputA").val();
+  inputB = $("#inputB").val();
   console.log(inputA, operators, inputB);
   $("#inputA").val("");
   $("#inputB").val("");
@@ -188,7 +180,7 @@ function post2Server(response) {
     data: {
       inputOne: inputA,
       inputTwo: inputB,
-      operators: operators
+      operators: operators,
     }, //end of data
   })
     .then(function (response) {
@@ -216,8 +208,6 @@ function post2Server(response) {
 //clear inputs.val('')
 
 //GET history of equations
-
-
 
 //render (); &
 
