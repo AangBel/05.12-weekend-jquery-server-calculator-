@@ -4,6 +4,12 @@ $(document).ready(onReady);
 
 let operators = ""
 
+let inputA = $("#inputA").val();
+  console.log(inputA);
+
+  let inputB = $("#inputB").val();
+  console.log(inputB);
+
 function onReady() {
   console.log("jquery is loaded");
   $('.operators').on('click', saveOperators);
@@ -19,8 +25,9 @@ function post2Server(event) {
   console.log("post2SERVER is ready");
   event.preventDefault();
   let inputA = $("#inputA").val();
+  console.log(inputA);
   let inputB = $("#inputB").val();
-
+  console.log(inputB);
     console.log(inputA, operators, inputB);
 
 
@@ -69,10 +76,12 @@ function getFromServer() {
 //is this the part that is posting the data that we got?
 function renderToDom(calcHx) {
   console.log("Got Data!");
-  let potato = calcHx[calcHx.length -1];
+//   let potato = calcHx[calcHx.length -1];
+  let potato = calcHx;
+  
 
   $("#calcHx").append(`
-        <li>${potato.inputA, operators, potato.inputB}</li>
+        <li>${potato.inputA + Number(operators)+ potato.inputB}</li>
     `);
 } //end of render to DOM
 
