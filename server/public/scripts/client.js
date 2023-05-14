@@ -15,23 +15,49 @@ function post2Server(event) {
   event.preventDefault();
   let inputA = $("#inputA").val();
   let inputB = $("#inputB").val();
-$.ajax({
-    method:'POST',
-    url:'/input',
+  "#inputA".val("");
+  "#inputB".val("");
+
+  $.ajax({
+    method: "POST",
+    url: "/input",
     data: {
-        inputOne: inputA,
-        inputTwo: inputB
-    }//end of data
-    }).then (function(response){
-        console.log('nice, working so far!');
+      inputOne: inputA,
+      inputTwo: inputB,
+    }, //end of data
+  })
+    .then(function (response) {
+      console.log("nice, working so far!");
+      getFromServer();
+    })
+    .catch(function (error) {
+      alert("ah shit catch-ed this thing wrong");
+      console.log("Request failed", error);
+    });
+} //end of post2Server
 
+function getFromServer() {
+  $.ajax({
+    method: "GET",
+    url: "/input",
+  })
+    .then(function (response) {
+      console.log("omg! get from server is working?!");
+    })
+    .catch(function (error) {
+      alert("request failed!, try again...");
+      console.log("request for GET failed!", error);
+    });
+} //end of get from server
 
-    }
+function renderToDom(gotData){
+    console.log('Got DaTA!');
+    $('#mathHistory').append(`
+        <li>${gotData[gotData.length -1].inputA}</li>
+    `)
+
     
-    )//end of response
-    //end of ajax
-
-}//end of post2Server
+}//end of render to DOM
 
 
 
