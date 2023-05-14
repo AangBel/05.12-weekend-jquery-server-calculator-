@@ -1,16 +1,19 @@
 {
   "dependencies": {
     "ajax": "^0.0.4",
+    "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "node": "^20.1.0"
+    "node": "^20.1.0",
+    "npm": "^9.6.6",
+    "start": "^5.1.0"
   },
   "name": "05.12-weekend-jquery-server-calculator-",
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "version": "1.0.0",
   "main": "script.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
   },
   "keywords": [],
   "author": "",
