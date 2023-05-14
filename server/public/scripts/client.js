@@ -6,7 +6,7 @@ function onReady() {
   $("#subtract").on("click", subFunc);
   $("#multiply").on("click", multiFunc);
   $("#divide").on("click", divFunc);
-  $("#enter").on("submit", submitFunc);
+  $("#enter").on("click", submitFunc);
   $("#clear").on("click", clearFunc);
 } //end of onReady
 
@@ -20,7 +20,7 @@ function post2Server(event) {
 
   $.ajax({
     method: "POST",
-    url: "/input",
+    url: "/calcHx",
     data: {
       inputOne: inputA,
       inputTwo: inputB,
@@ -64,26 +64,31 @@ function renderToDom(gotData){
 //FUNCTIONS for the items above
 
 function addFunc() {
+    event.preventDefault();
   console.log("addFunc is working");
   inputA + inputB;
 }
 
 function subFunc() {
+    event.preventDefault();
   console.log("subFunc is working");
   inputA - inputB;
 }
 
 function multiFunc() {
+    event.preventDefault();
   console.log("multiFunc is working");
   inputA * inputB;
 }
 
 function divFunc() {
+    event.preventDefault();
   console.log("divFunc is working");
   inputA / inputB;
 }
 
 function submitFunc() {
+    event.preventDefault();
   console.log("submitFunc is working");
 }
 
