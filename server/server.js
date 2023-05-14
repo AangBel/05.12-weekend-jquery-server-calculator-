@@ -4,7 +4,13 @@ const app = express();
 const PORT = 5000;
 let mathCalcs = [];
 
+const calcHx = require("./modules/calcHx.js");
+const calculator = require('./modules/calculator.js');
+console.log(calcHx);
+
 app.use(bodyParser.urlencoded({extended:true}))
+
+// app.use(server/modules/calcHx.js)
 
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
@@ -25,6 +31,8 @@ app.get('/mathCalcs', function(req, res) {
     // req.body is the data that the client has sent in the request
     // req.body is a thing we get from bodyParser
     console.log('POST some data!', req.body);
+    calculator(req.body);
+
   
     // Add my new quote to the quoteList
     mathCalcs.push(req.body);
@@ -38,10 +46,11 @@ app.get('/mathCalcs', function(req, res) {
 
 
 
-function mathing(){
+// function mathing(){
 
 function addFunc() {
     console.log("addFunc is working");
+    console.log(addFunc);
     inputA + inputB;
     // return (inputA + inputB = )
   }
@@ -69,7 +78,7 @@ function addFunc() {
     console.log("clearFunc is working");
   }
 
-  }
+  
 
 
 
@@ -80,5 +89,5 @@ function addFunc() {
 
 
 app.listen(PORT, () => {
-    console.log ('Server is running on port', PORT)
+    console.log ('Server is running on port', PORT);
 });

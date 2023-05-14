@@ -1,4 +1,4 @@
-const calcHx = require("../../modules/calcHx");
+// const calcHx = require("./server/modules/calcHx.js");
 
 $(document).ready(onReady);
 
@@ -6,6 +6,7 @@ let operators = ""
 
 function onReady() {
   console.log("jquery is loaded");
+  $('.operators').on('click', saveOperators);
   $("#add").on("click", addFunc);
   $("#subtract").on("click", subFunc);
   $("#multiply").on("click", multiFunc);
@@ -19,7 +20,7 @@ function post2Server(event) {
   event.preventDefault();
   let inputA = $("#inputA").val();
   let inputB = $("#inputB").val();
-  
+
     console.log(inputA, operators, inputB);
 
 
@@ -29,11 +30,13 @@ function post2Server(event) {
     data: {
       inputOne: inputA,
       inputTwo: inputB,
+      operators: operators
     }, //end of data
   })
     .then(function (response) {
       console.log("nice, working so far!");
       getFromServer();
+      console.log(response);
     })
     .catch(function (error) {
       alert("ah shit catch-ed this thing wrong");
@@ -52,6 +55,7 @@ function getFromServer() {
     .then(function (response) {
         console.log(response);
       console.log("omg! get from server is working?!");
+      renderToDom(response);
     })
     .catch(function (error) {
       alert("request failed!, try again...");
@@ -63,14 +67,21 @@ function getFromServer() {
 
 
 //is this the part that is posting the data that we got?
-function renderToDom(gotData) {
+function renderToDom(calcHx) {
   console.log("Got Data!");
+  let potato = calcHx[calcHx.length -1];
+
   $("#calcHx").append(`
-        <li>${calcHx[calcHx.length - 1].inputA, Number(operators), calcHx[calcHx.length - 1].inputB}</li>
+        <li>${potato.inputA, operators, potato.inputB}</li>
     `);
 } //end of render to DOM
 
 //FUNCTIONS for the items above
+
+function saveOperators(){
+    operators = $(this).attr("val")
+    
+}///end of save
 
 function addFunc() {
   event.preventDefault();
@@ -131,16 +142,17 @@ function post2Server(response) {
       data: {
         inputOne: inputA,
         inputTwo: inputB,
+
       } //end of data
-    })
-      .then(function (response) {
+    }).then(function (response) {
         console.log("nice, working so far!");
+        console.log(response);
         getFromServer();
-      })
-      .catch(function (error) {
+      }).catch(function (error) {
         alert("ah shit catch-ed this thing wrong");
         console.log("Request failed", error);
       });
+      renderToDom();
   } //end of post2Server
 // //
 //  $('#inputA).val("");
