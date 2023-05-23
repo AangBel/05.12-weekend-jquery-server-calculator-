@@ -72,28 +72,28 @@ function getFromServer() {
 
 // + Number(operators)+ potato.inputB
 
-function getFromCalc() {
-  console.log("getFromCalc is working");
-  $.ajax({
-    method: "GET",
-    url: "/calculator",
-    data: {
-      inputOne: inputA,
-      inputTwo: inputB,
-      operators: operators,
-    }, //end of data
-  })
-    .then(function (response) {
-      console.log(response);
-      console.log("omg! get from server is working?!");
-      renderToDom(response);
-    })
-    .catch(function (error) {
-      alert("request failed!, try again...");
-      console.log("request for GET failed!", error);
-    });
-  calculator();
-}
+// function getFromCalc() {
+//   console.log("getFromCalc is working");
+//   $.ajax({
+//     method: "GET",
+//     url: "/calculator",
+//     data: {
+//       inputOne: inputA,
+//       inputTwo: inputB,
+//       operators: operators,
+//     }, //end of data
+//   })
+//     .then(function (response) {
+//       console.log(response);
+//       console.log("omg! get from server is working?!");
+//       renderToDom(response);
+//     })
+//     .catch(function (error) {
+//       alert("request failed!, try again...");
+//       console.log("request for GET failed!", error);
+//     });
+//   calculator();
+// }
 
 //end of get from calc
 
@@ -122,7 +122,7 @@ function saveOperators() {
   operators = $(this).attr("val");
 } ///end of save
 
-function addFunc() {
+function addFunc(event) {
   event.preventDefault();
   console.log("addFunc is working");
   operators = "+";
@@ -130,7 +130,7 @@ function addFunc() {
   inputA + inputB;
 }
 
-function subFunc() {
+function subFunc(event) {
   event.preventDefault();
   console.log("subFunc is working");
   operators = "-";
@@ -138,7 +138,7 @@ function subFunc() {
   inputA - inputB;
 }
 
-function multiFunc() {
+function multiFunc(event) {
   event.preventDefault();
   console.log("multiFunc is working");
   operators = "*";
@@ -146,7 +146,7 @@ function multiFunc() {
   inputA * inputB;
 }
 
-function divFunc() {
+function divFunc(event) {
   event.preventDefault();
   operators = "/";
   console.log(operators);
@@ -154,13 +154,14 @@ function divFunc() {
   inputA / inputB;
 }
 
-function submitFunc() {
+function submitFunc(event) {
   event.preventDefault();
   console.log("submitFunc is working");
   post2Server();
 }
 
-function clearFunc() {
+function clearFunc(event) {
+  event.preventDefault();
   console.log("clearFunc is working");
 }
 
@@ -192,8 +193,33 @@ function post2Server(response) {
       alert("ah shit catch-ed this thing wrong");
       console.log("Request failed", error);
     });
-  renderToDom();
+  // renderToDom();
 } //end of post2Server
+
+
+function calculator(inputA, operators, inputB) {
+
+  console.log(inputA, operators, inputB);
+  console.log("calculator is working");
+
+  switch (operators) {
+    case "+":
+      return Number(inputA) + Number(inputB);
+      break;
+
+    case "-":
+      return  inputA - inputB;
+      break;
+
+    case "*":
+      return inputA * inputB;
+      break;
+
+    case "/":
+      return inputA / inputB;
+      break;
+  }
+}
 // //
 //  $('#inputA).val("");
 //   "#inputB".val("");
